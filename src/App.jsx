@@ -1,32 +1,35 @@
 import { useState, useRef } from 'react';
-import Notes from './Components/notes';
-import AddNote from './Components/addNote'; // Import AddNote component
-import DeleteIcon from './Components/deleteIcon';
+import Notes from './Components/Notes/Notes';
+import AddNote from './Components/AddNote/AddNote';
+import DeleteIcon from './Components/DeleteIcon/DeleteIcon';
+import useLocalStorage from './hooks/useLocalStorage';
 
 const App = () => {
-  const [notes, setNotes] = useState([
+  const [notes, setNotes] = useLocalStorage('notes', [
     { id: 1, text: 'this is the first note' },
     { id: 2, text: 'this is the second note' },
   ]);
 
-  // Function to add a new note
   const addNote = (noteText) => {
     const newNote = {
-      id: notes.length + 1, // Simple ID assignment
+      id: notes.length + 1,
       text: noteText,
     };
-    const updatedNotes = [...notes, newNote];
-    setNotes(updatedNotes);
-    localStorage.setItem('notes', JSON.stringify(updatedNotes));
+    setNotes([...notes, newNote]);
   };
 
   const deleteIconRef = useRef(null);
 
   return (
     <div>
-      <AddNote addNote={addNote} /> {/* Render AddNote component */}
-      <Notes notes={notes} setNotes={setNotes} />
-      <div ref={deleteIconRef}>
+      <AddNote addNote={addNote} />
+      <Notes 
+        notes={notes} 
+        setNotes={setNotes} 
+        deleteIconRef={deleteIconRef} 
+      />
+
+      <div ref={deleteIconRef} >
         <DeleteIcon />
       </div>
     </div>

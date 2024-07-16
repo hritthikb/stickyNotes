@@ -1,7 +1,5 @@
 import { forwardRef } from 'react';
 
-/* eslint-disable react/prop-types */
-// eslint-disable-next-line react/display-name
 const Note = forwardRef(({ content, initialPos, ...props }, ref) => {
   return (
     <div
@@ -16,6 +14,7 @@ const Note = forwardRef(({ content, initialPos, ...props }, ref) => {
         width: '200px',
         cursor: 'move',
         backgroundColor: 'lightyellow',
+        zIndex: 1000, // Elevated z-index
       }}
       {...props}
     >

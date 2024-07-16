@@ -1,0 +1,23 @@
+#delete-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(0, 255, 0, 0.3); /* Transparent green background for debugging */
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+#deletion-area {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+    background-color: rgba(255, 0, 0, 0.3);
+    z-index: -100;
+    /* Transparent red background for debugging */
+}
